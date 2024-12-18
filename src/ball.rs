@@ -1,18 +1,21 @@
-use super::math::point2d::Point2d;
+use super::math::point::Point;
 
-#[derive(Debug, Copy, Clone, Default)]
+#[derive(Debug, Copy, Clone, Default, PartialEq)]
 pub struct Ball {
-    pub pos: Point2d<f32>,
-    pub vel: Point2d<f32>,
+    pub pos: Point<f32>,
+    pub vel: Point<f32>,
     pub mass: f32,
+    pub radius: f32,
+    pub elasticity: f32
 }
 
 impl Ball {
-    pub fn new(x: f32, y: f32, mass: Option<f32>) -> Self {
+    pub fn new(x: f32, y: f32) -> Self {
         Self {
-            pos: Point2d {x, y},
-            vel: Point2d::default(),
-            mass: mass.unwrap_or(1.0),
+            pos: Point {x, y},
+            vel: Point::default(),
+            mass: 1.0,
+            radius: 10.0,
         }
     }
 }
@@ -23,11 +26,12 @@ mod test {
 
     #[test]
     fn test_create_ball() {
-        let b1 = Ball::new(0.0, 0.0, None);
-        let b2 = Ball { 
-            pos: Point2d { x: 10.0, y: 3.0 },
-            vel: Point2d { x: 10.0, y: 3.0 },
+        let _b1 = Ball::new(0.0, 0.0);
+        let _b2 = Ball { 
+            pos: Point { x: 10.0, y: 3.0 },
+            vel: Point { x: 10.0, y: 3.0 },
             mass: 1.0,
         };
+        assert!(_b1.pos == P);
     }
 }
