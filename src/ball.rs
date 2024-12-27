@@ -13,9 +13,7 @@ impl Ball {
     pub fn new(x: f32, y: f32) -> Self {
         Self {
             pos: Point {x, y},
-            vel: Point::default(),
-            mass: 1.0,
-            radius: 10.0,
+            ..Default::default()
         }
     }
 }
@@ -30,8 +28,8 @@ mod test {
         let _b2 = Ball { 
             pos: Point { x: 10.0, y: 3.0 },
             vel: Point { x: 10.0, y: 3.0 },
-            mass: 1.0,
+            ..Default::default()
         };
-        assert!(_b1.pos == P);
+        assert!(_b1.pos == _b2.pos);
     }
 }
